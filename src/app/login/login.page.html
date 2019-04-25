@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-input placeholder="Enter UserName" [(ngModel)]="userName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder="Password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="full" color="danger" (click)="login()">Login</ion-button>
+  <ion-button expand="full" color="danger" (click)="goToSettigs()">Settings</ion-button>
+</ion-content>
