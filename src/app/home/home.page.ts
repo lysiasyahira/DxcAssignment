@@ -2,6 +2,7 @@ import { Component, ElementRef, NgZone, ViewChild } from "@angular/core";
 import { Geolocation } from "@ionic-native/geolocation/ngx";
 import { Platform, LoadingController } from "@ionic/angular";
 import { initDomAdapter } from '@angular/platform-browser/src/browser';
+import { MapService } from '../map.service';
 
 declare var google: any;
 @Component({
@@ -18,6 +19,7 @@ export class HomePage {
   marker: any;
 
   constructor(
+    private mapService:MapService,
     public loader: LoadingController,
     public zone: NgZone,
     public geolocation: Geolocation,
@@ -30,19 +32,12 @@ export class HomePage {
     
         mapLoader.present();
           this.initMap(mapLoader);
+        
           
       });
     })
   }
     
- 
-
-  
-  moveToLocation(map, lat, lng) {
-    var center = new google.maps.LatLng(lat, lng);
-    // using global variable:
-    map.panTo(center);
-  }
   initMap(r:HTMLIonLoadingElement) {
     /*Get Current location*/
     this.geolocation.getCurrentPosition().then(position => {
@@ -69,7 +64,9 @@ export class HomePage {
       this.markerOptions.map = this.map;
       this.markerOptions.title = "KL";
       this.marker = new google.maps.Marker(this.markerOptions);
-      this.moveToLocation(this.map, this.location.lat, this.location.lng);
+      this.mapService.moveToLocation(this.map, this.location.lat, this.location.lng);
+      this.mapService.displayRoute(this.map);
+
       r.dismiss();
     }, 3000);
   }
