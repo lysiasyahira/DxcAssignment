@@ -28,4 +28,7 @@ export class LoginPage implements OnInit {
   goToSettigs(){
     this.router.navigateByUrl('/settings');
   }
+  goToHome(){
+    this.router.navigateByUrl('/');
+  }
 }
