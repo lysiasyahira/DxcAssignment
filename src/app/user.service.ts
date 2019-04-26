@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { User } from './settings/settings.page';
+import { User } from './register/register.page';
+
 
 @Injectable({
   providedIn: 'root'

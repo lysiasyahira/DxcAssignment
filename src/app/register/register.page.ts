@@ -8,12 +8,12 @@ export class User{
 }
 
 @Component({
-  selector: "app-settings",
-  templateUrl: "./settings.page.html",
-  styleUrls: ["./settings.page.scss"]
+  selector: "app-register",
+  templateUrl: "./register.page.html",
+  styleUrls: ["./register.page.scss"]
 })
-export class SettingsPage implements OnInit {
-  user:User={userName:"",password:""};
+export class RegisterPage implements OnInit {
+  user:User={userName:"",password:""}; 
 
   constructor(private router: Router, private auth: AuthService) {}
 
