@@ -1,14 +1,18 @@
-import { Component } from '@angular/core';
+import { Component ,ViewChild} from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, MenuController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
 })
+
 export class AppComponent {
+  
   public appPages = [
     {
       title: 'Home',
@@ -25,16 +29,24 @@ export class AppComponent {
       icon:'key'
     }
   ];
-
+ 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+    public auth:AuthService,
+    private router:Router,
+    public menuCtrl: MenuController
   ) {
     this.initializeApp();
   }
-
+  logout(){
+    this.auth.logout();
+    this.menuCtrl.close();
+    this.router.navigateByUrl("/login");
+  }
   initializeApp() {
+    
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();

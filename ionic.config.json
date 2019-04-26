@@ -1,5 +1,7 @@
 {
   "name": "DxcAssignment",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
