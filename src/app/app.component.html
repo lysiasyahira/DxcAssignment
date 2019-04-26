@@ -15,10 +15,10 @@
                 Home
               </ion-label>
             </ion-item>
-            <ion-item [routerDirection]="'root'" [routerLink]="['/list']">
-              <ion-icon slot="start" name="list"></ion-icon>
+            <ion-item [routerDirection]="'root'" [routerLink]="['/map']">
+              <ion-icon slot="start" name="map"></ion-icon>
               <ion-label>
-                List
+               Map
               </ion-label>
             </ion-item>
             <ion-item *ngIf="!auth.IsAuthenticated"
