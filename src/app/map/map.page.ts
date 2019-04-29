@@ -38,12 +38,27 @@ export class MapPage implements OnInit {
       });
     })
   }
-
+   geocoder1 = new google.maps.Geocoder();
+  convertToAddress(latlng,map){
+    this.geocoder1.geocode({'address': latlng}, function(results, status) {
+      if (status === 'OK') {
+        if (results[0]) {
+          console.log(results);
+         
+        } else {
+          window.alert('No results found');
+        }
+      } else {
+        window.alert('Geocoder failed due to: ' + status);
+      }
+    });
+  }
   initMap(r: HTMLIonLoadingElement) {
     /*Get Current location*/
     this.geolocation.getCurrentPosition().then(position => {
       this.location.lat = position.coords.latitude;
       this.location.lng = position.coords.longitude;
+      this.convertToAddress(this.map,new google.maps.LatLng(this.location.lat, this.location.lng) );
     });
     /*Map options*/
     this.mapOptions = {
