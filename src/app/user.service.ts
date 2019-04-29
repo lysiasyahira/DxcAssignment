@@ -25,4 +25,13 @@ export class UserService {
    return [];
   
  }
+
+ saveNotification(userName){
+  localStorage.setItem(userName,"true");
+ }
+
+ removeNotification(userName){
+   localStorage.removeItem(userName);
+ }
+
 }

@@ -30,9 +30,10 @@ const routes: Routes = [
 },
 {
   path: 'settings',
-  loadChildren: './setting/setting.module#SettingPageModule'
-},
-  { path: 'setting', loadChildren: './setting/setting.module#SettingPageModule' }
+  loadChildren: './setting/setting.module#SettingPageModule',
+  canActivate:[AuthGuard]
+}
+  
 ];
 
 @NgModule({

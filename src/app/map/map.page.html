@@ -3,15 +3,24 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Map</ion-title>
+    <ion-title>GPS Tracking</ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-toolbar>
+    <ion-searchbar placeholder="Search Nearby Place"></ion-searchbar>
+  </ion-toolbar>
 
 <ion-content>
-    <h2>GPS Tracking</h2>
-  <ion-card>
+ 
     <ion-card-content>
       <div #map id="map"></div>
+      <ion-item>
+          <ion-icon slot="start" name="pin"></ion-icon>
+          <ion-label>Select Current Location</ion-label>  
+       </ion-item>
+       <ion-item>
+         <ion-label>Share Nearby</ion-label>
+      </ion-item>
     </ion-card-content>
-  </ion-card>
+ 
 </ion-content>

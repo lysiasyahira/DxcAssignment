@@ -18,6 +18,7 @@ export class AuthService {
     if (!user) {
       return false;
     }
+    localStorage.setItem("userName",username)
     localStorage.setItem("loggedIn", "true");
     return true;
   }
@@ -25,7 +26,13 @@ export class AuthService {
   get IsAuthenticated() {
     return !!localStorage.getItem("loggedIn");
   }
+  get userName(){
+    return localStorage.getItem("userName");
+  }
   logout() {
+    //loggin out from google
+
+    localStorage.removeItem("userName")
     localStorage.removeItem("loggedIn");
   }
 

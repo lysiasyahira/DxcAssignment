@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { GravatarService } from './gravatar.service';
 
 @Component({
   selector: 'app-root',
@@ -36,7 +37,9 @@ export class AppComponent {
     private statusBar: StatusBar,
     public auth:AuthService,
     private router:Router,
-    public menuCtrl: MenuController
+    public gv:GravatarService,
+    public menuCtrl: MenuController,
+    
   ) {
     this.initializeApp();
   }
@@ -45,6 +48,9 @@ export class AppComponent {
     this.menuCtrl.close();
     this.router.navigateByUrl("/login");
   }
+
+color="red";
+ 
   initializeApp() {
     
     this.platform.ready().then(() => {
