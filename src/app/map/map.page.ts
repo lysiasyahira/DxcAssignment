@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, NgZone, ViewChild, OnInit } from "@angular/core";
+import { Geolocation } from "@ionic-native/geolocation/ngx";
+import { Platform, LoadingController } from "@ionic/angular";
+import { MapService } from '../map.service';
+
+declare var google: any;
 
 @Component({
   selector: 'app-map',
@@ -6,35 +11,64 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['map.page.scss']
 })
 export class MapPage implements OnInit {
-  private selectedItem: any;
-  private icons = [
-    'flask',
-    'wifi',
-    'beer',
-    'football',
-    'basketball',
-    'paper-plane',
-    'american-football',
-    'boat',
-    'bluetooth',
-    'build'
-  ];
-  public items: Array<{ title: string; note: string; icon: string }> = [];
-  constructor() {
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
+  ngOnInit(): void {
+    //throw new Error("Method not implemented.");
+  }
+  @ViewChild("map") mapElement: ElementRef;
+  map: any;
+  mapOptions: any;
+  location = { lat: null, lng: null };
+  markerOptions: any = { position: null, map: null, title: null };
+  marker: any;
+
+  constructor(
+    private mapService: MapService,
+    public loader: LoadingController,
+    public zone: NgZone,
+    public geolocation: Geolocation,
+    private plt: Platform
+  ) {
+    this.plt.ready().then(() => {
+      const loading = this.loader.create({
+        message: 'Please wait. . .'
+      }).then(mapLoader => {
+
+        mapLoader.present();
+        this.initMap(mapLoader);
       });
-    }
+    })
   }
 
-  ngOnInit() {
-  
+  initMap(r: HTMLIonLoadingElement) {
+    /*Get Current location*/
+    this.geolocation.getCurrentPosition().then(position => {
+      this.location.lat = position.coords.latitude;
+      this.location.lng = position.coords.longitude;
+    });
+    /*Map options*/
+    this.mapOptions = {
+      center: new google.maps.LatLng(this.location.lat, this.location.lng),
+      zoom: 16,
+      mapTypeControl: true,
+      mapTypeId: "roadmap"
+    };
+    setTimeout(() => {
+      this.map = new google.maps.Map(
+        this.mapElement.nativeElement,
+        this.mapOptions
+      );
+      /*Marker Options*/
+      this.markerOptions.position = new google.maps.LatLng(
+        this.location.lat,
+        this.location.lng
+      );
+      this.markerOptions.map = this.map;
+      this.markerOptions.title = "KL";
+      this.marker = new google.maps.Marker(this.markerOptions);
+      this.mapService.moveToLocation(this.map, this.location.lat, this.location.lng);
+      this.mapService.displayRoute(this.map);
+
+      r.dismiss();
+    }, 3000);
   }
-  // add back when alpha.4 is out
-  // navigate(item) {
-  //   this.router.navigate(['/list', JSON.stringify(item)]);
-  // }
 }

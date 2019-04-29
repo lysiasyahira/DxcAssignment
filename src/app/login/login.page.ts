@@ -15,9 +15,9 @@ export class LoginPage implements OnInit {
   //Typescript is a transpiler not compiler
   ngOnInit() {
   }
-  login(){
-    console.log(this.userName,this.password);
-    if(this.auth.validateUser(this.userName,this.password)){
+  login() {
+    console.log(this.userName, this.password);
+    if (this.auth.validateUser(this.userName, this.password)) {
       this.router.navigateByUrl('/home');
     }
     else{
@@ -26,9 +26,9 @@ export class LoginPage implements OnInit {
     //this.router.navigateByUrl('/home');
   }
   goToSettigs(){
-    this.router.navigateByUrl('/settings');
+    this.router.navigateByUrl('/register');
   }
   goToHome(){
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/home');
   }
 }

@@ -1,37 +1,47 @@
-<ion-toolbar>
- 
-    <ion-toolbar>
-       
-    </ion-toolbar>
-</ion-toolbar>
+<ion-header>
+  <ion-toolbar color="danger"> </ion-toolbar>
+</ion-header> 
 
 <ion-content>
-  <ion-card >
-    <ion-card-header>
-      <h2>Login</h2>
-    </ion-card-header>
-    <ion-card-content>
-     
-      <ion-list>
-        <ion-item>
-          <ion-input
-            placeholder="Enter UserName"
-            [(ngModel)]="userName"
-          ></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input type= "password" placeholder="Password" [(ngModel)]="password"></ion-input>
-        </ion-item>
-      </ion-list>
-      <ion-button expand="full" color="primary" (click)="login()"
-        >Login</ion-button
-      >
-      <ion-button expand="full" color="danger" (click)="goToSettigs()"
-        >Register</ion-button
-      >
-      <ion-button expand="full" color="secondary" (click)="goToHome()"
-      >Home</ion-button
-    >
-    </ion-card-content>
-  </ion-card>
+  <ion-grid>
+    <ion-row justify-content-center>
+      <ion-col align-self-center>
+        <div text-center>
+          <h4>Sign In</h4>
+        </div>
+        <div padding>
+          <ion-item>
+            <ion-label position="floating">Username</ion-label>
+            <ion-input
+              type="text"
+              [(ngModel)]="userName"
+              placeholder=""
+            ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input
+              type="password"
+              [(ngModel)]="password"
+              placeholder=""
+            ></ion-input>
+          </ion-item>
+        </div>
+
+        <div>
+          <ion-button expand="block" color="primary" (click)="login()"
+            >Login
+          </ion-button>
+          <ion-button expand="block" color="danger" (click)="goToSettigs()"
+            >Register</ion-button
+          >
+          <!-- <ion-button expand="block" color="warning" (click)="goToHome()"
+            >Home
+            <ion-icon slot="icon-only" name="home"></ion-icon> -->
+          
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

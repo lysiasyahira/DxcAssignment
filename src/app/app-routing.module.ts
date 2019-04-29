@@ -12,7 +12,6 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: './home/home.module#HomePageModule',
-    canActivate:[AuthGuard]
   },
   {
     path: 'map',
@@ -24,7 +23,16 @@ const routes: Routes = [
     path: 'login',
     loadChildren: './login/login.module#LoginPageModule'
   },
-  { path: 'settings', loadChildren: './register/register.module#RegisterPageModule' }
+
+{
+  path: 'register',
+  loadChildren: './register/register.module#RegisterPageModule'
+},
+{
+  path: 'settings',
+  loadChildren: './setting/setting.module#SettingPageModule'
+},
+  { path: 'setting', loadChildren: './setting/setting.module#SettingPageModule' }
 ];
 
 @NgModule({
