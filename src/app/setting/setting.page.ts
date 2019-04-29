@@ -4,6 +4,7 @@ import { AuthService } from "../auth.service";
 import { AlertController } from '@ionic/angular';
 import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
 import { Alert } from 'selenium-webdriver';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-setting",
@@ -11,7 +12,7 @@ import { Alert } from 'selenium-webdriver';
   styleUrls: ["./setting.page.scss"]
 })
 export class SettingPage implements OnInit {
-  constructor(private user: UserService, private auth: AuthService,private alertCtrl:AlertController) {}
+  constructor(private user: UserService, private auth: AuthService,private alertCtrl:AlertController, private router:Router) {}
 
   ngOnInit() {}
   saveNotification(e) {
@@ -61,6 +62,10 @@ export class SettingPage implements OnInit {
       }).then(alert=>{
         alert.present();
       })
+  }
+  changePhoto(){
+    this.router.navigateByUrl("/upload");
+    
   }
 }
 
