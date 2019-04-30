@@ -33,7 +33,8 @@ const routes: Routes = [
   loadChildren: './setting/setting.module#SettingPageModule',
   canActivate:[AuthGuard]
 },
-  { path: 'upload', loadChildren: './upload/upload.module#UploadPageModule' }
+  { path: 'upload', loadChildren: './upload/upload.module#UploadPageModule' },
+ 
   
 ];
 

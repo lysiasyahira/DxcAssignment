@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase:{
+    apiKey: "AIzaSyCe21uwarsq4PgQbp-GT0z7rwc-WkfhfD0",
+    authDomain: "geolocation-238602.firebaseapp.com",
+    databaseURL: "https://geolocation-238602.firebaseio.com",
+    projectId: "geolocation-238602",
+    storageBucket: "geolocation-238602.appspot.com",
+    messagingSenderId: "872846885025"
+
+  }
 };
 
 /*

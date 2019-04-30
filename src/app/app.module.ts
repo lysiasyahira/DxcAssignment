@@ -9,14 +9,21 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-
+import * as env from '../environments/environment';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {AngularFireDatabaseModule,AngularFireDatabase} from '@angular/fire/database';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(env.environment.firebase),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
+    
   ],
   providers: [
     Camera,
