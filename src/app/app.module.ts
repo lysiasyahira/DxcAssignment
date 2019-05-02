@@ -13,6 +13,7 @@ import * as env from '../environments/environment';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireDatabaseModule,AngularFireDatabase} from '@angular/fire/database';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -29,7 +30,7 @@ import {AngularFireDatabaseModule,AngularFireDatabase} from '@angular/fire/datab
     Camera,
     StatusBar,
     SplashScreen,
-   
+    NativeGeocoder,
     Geolocation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

@@ -7,21 +7,36 @@
   </ion-toolbar>
 </ion-header>
 <ion-toolbar>
-    <ion-searchbar placeholder="DXC Technolgoes"></ion-searchbar>
-    <ion-searchbar placeholder="Search Nearby Place"></ion-searchbar>
-  </ion-toolbar>
+  <ion-searchbar
+    placeholder="Current location"
+    [value]="result"
+  ></ion-searchbar>
+  <!-- <ion-input [value]="result"></ion-input> -->
+  <ion-searchbar
+    [(ngModel)]="autocomplete.input"
+    (ionInput)="updateSearchResults()"
+    placeholder="Search for a place"
+  ></ion-searchbar>
+  <ion-list [hidden]="autocompleteItems.length == 0">
+    <ion-item
+      *ngFor="let item of autocompleteItems"
+      tappable
+      (click)="selectSearchResult(item)"
+    >
+      {{ item.description }}
+    </ion-item>
+  </ion-list>
+</ion-toolbar>
 
 <ion-content>
- 
-    <ion-card-content>
-      <div #map id="map"></div>
-      <ion-item>
-          <ion-icon slot="start" name="pin"></ion-icon>
-          <ion-label>Select Current Location</ion-label>  
-       </ion-item>
-       <ion-item>
-         <ion-label>Share Nearby</ion-label>
-      </ion-item>
-    </ion-card-content>
- 
+  <ion-card-content>
+    <div #map id="map"></div>
+    <ion-item>
+      <ion-icon slot="start" name="pin"></ion-icon>
+      <ion-label>Select Current Location</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Share Nearby</ion-label>
+    </ion-item>
+  </ion-card-content>
 </ion-content>
