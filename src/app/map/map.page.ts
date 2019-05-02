@@ -62,7 +62,7 @@ export class MapPage {
         })
         .then(mapLoader => {
           mapLoader.present();
-          this.initMap(mapLoader);
+          this.initMap(mapLoader);//call function initializa
         });
     });
   }
@@ -120,6 +120,14 @@ export class MapPage {
       }
     );
   }
+ 
+  userSelectedThePlace(){
+    //display the route
+    
+  }
+
+
+  
   clearMarkers() {
     for (var i = 0; i < this.markers.length; i++) {
       console.log(this.markers[i]);
@@ -142,17 +150,33 @@ export class MapPage {
           position: results[0].geometry.location,
           map: this.map
         });
+
+        let lat = results[0].geometry.location.lat;
+        let lng = results[0].geometry.location.lng;
+
+        this.getAddress(lat,lng);
+      
         this.markers.push(marker);
         this.map.setCenter(results[0].geometry.location);
       }
     });
   }
+
+  //function for initialize map during page load, get current location
   initMap(r: HTMLIonLoadingElement) {
     /*Get Current location*/
     this.geolocation.getCurrentPosition().then(position => {
       this.location.lat = position.coords.latitude;
       this.location.lng = position.coords.longitude;
       this.getAddress(this.location.lat, this.location.lng);
+
+      this.markerOptions.position = new google.maps.LatLng(
+        this.location.lat,
+        this.location.lng
+      );
+      this.markerOptions.map = this.map;
+      this.markerOptions.title = "KL";
+      this.marker = new google.maps.Marker(this.markerOptions);
     });
     /*Map options*/
     this.mapOptions = {
