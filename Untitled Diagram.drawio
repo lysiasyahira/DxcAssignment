@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-04-19T02:32:58.773Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.72 Safari/537.36" etag="7MKl1fkdJ1Lp23f6GYmY" version="14.4.7" type="github">
+<mxfile host="app.diagrams.net" modified="2021-04-19T02:33:47.164Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.72 Safari/537.36" etag="PkHbf1S5fbkLpIHBxaKS" version="14.4.7" type="github">
   <diagram id="_vzSdO4paiWaXGIucQqC" name="Page-1">
     <mxGraphModel dx="782" dy="437" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -22,8 +22,8 @@
         <mxCell id="utOfhiDsoG_AlEwx6CIt-12" value="Service Collection" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="140" y="120" width="110" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="utOfhiDsoG_AlEwx6CIt-13" value="Services(Singletion)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="240" y="160" width="180" height="20" as="geometry" />
+        <mxCell id="utOfhiDsoG_AlEwx6CIt-13" value="Services(Singletion)&amp;nbsp;ICommonService,IClientLwpService,IDefaultCacheProvider" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="200" y="160" width="380" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
